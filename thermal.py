@@ -47,12 +47,12 @@ if not args.windowed:
     flags = pygame.FULLSCREEN
     screen = pygame.display.set_mode((1920, 1080), flags, vsync=1)
 else:
-    screen = pygame.display.set_mode(
-        [32 * WINDOW_SCALING_FACTOR, 24 * WINDOW_SCALING_FACTOR]
-    )
+    screen = pygame.display.set_mode((1920, 1030))
+
+screensize_x, screensize_y = screen.get_size()
+
 # print(pygame.display.Info())
 # print(pygame.display.get_desktop_sizes())
-screensize_x, screensize_y = screen.get_size()
 
 # the list of colors we can choose from
 heatmap = (
