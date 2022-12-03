@@ -1,0 +1,3 @@
+adafruit-circuitpython-mlx90640
+pillow
+pygame
