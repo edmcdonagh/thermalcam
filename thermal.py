@@ -50,8 +50,8 @@ else:
     screen = pygame.display.set_mode(
         [32 * WINDOW_SCALING_FACTOR, 24 * WINDOW_SCALING_FACTOR]
     )
-print(pygame.display.Info())
-print(pygame.display.get_desktop_sizes())
+# print(pygame.display.Info())
+# print(pygame.display.get_desktop_sizes())
 screensize_x, screensize_y = screen.get_size()
 
 # the list of colors we can choose from
@@ -113,10 +113,10 @@ sensorout = pygame.Surface((32, 24))
 
 # initialize the sensor
 mlx = adafruit_mlx90640.MLX90640(i2c)
-print("MLX addr detected on I2C, Serial #", [hex(i) for i in mlx.serial_number])
+# print("MLX addr detected on I2C, Serial #", [hex(i) for i in mlx.serial_number])
 mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_16_HZ
-print(mlx.refresh_rate)
-print("Refresh rate: ", pow(2, (mlx.refresh_rate - 1)), "Hz")
+# print(mlx.refresh_rate)
+# print("Refresh rate: ", pow(2, (mlx.refresh_rate - 1)), "Hz")
 
 frame = [0] * 768
 while True:
@@ -130,12 +130,12 @@ while True:
     except (ValueError, OSError):
         continue  # these happen, no biggie - retry
 
-    print("Read 2 frames in %0.2f s" % (time.monotonic() - stamp))
+#     print("Read 2 frames in %0.2f s" % (time.monotonic() - stamp))
 
     pixels = [0] * 768
     min_temp = min(frame)
     max_temp = max(frame)
-    print(f"Min value = {min(frame)}, Max value = {max(frame)}")
+#     print(f"Min value = {min(frame)}, Max value = {max(frame)}")
     for i, pixel in enumerate(frame):
         coloridx = map_value(pixel, min_temp, max_temp, 0, COLORDEPTH - 1)
         coloridx = int(constrain(coloridx, 0, COLORDEPTH - 1))
@@ -166,8 +166,8 @@ while True:
     pygame.display.update()
     if args.windowed:
         pygame.event.pump()
-    print(
-        "Completed 2 frames in %0.2f s (%d FPS)"
-        % (time.monotonic() - stamp, 1.0 / (time.monotonic() - stamp))
-    )
+#     print(
+#         "Completed 2 frames in %0.2f s (%d FPS)"
+#         % (time.monotonic() - stamp, 1.0 / (time.monotonic() - stamp))
+#     )
             
