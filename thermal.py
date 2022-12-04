@@ -149,6 +149,7 @@ while True:
     # pixelrgb = [colors[constrain(int(pixel), 0, COLORDEPTH-1)] for pixel in pixels]
     img = Image.new("RGB", (32, 24))
     img.putdata(pixels)
+    img = img.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
     if not args.disable_interpolation:
         img = img.resize((32 * INTERPOLATE, 24 * INTERPOLATE), Image.Resampling.BICUBIC)
     img_surface = pygame.image.fromstring(img.tobytes(), img.size, img.mode)
